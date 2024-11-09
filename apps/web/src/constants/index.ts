@@ -1,0 +1,1 @@
+export {CACHE} from './cache'

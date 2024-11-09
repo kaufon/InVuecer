@@ -1,0 +1,5 @@
+{
+  "exports":{
+    "./schemas/": "./src/schemas/index.ts"
+  }
+}
