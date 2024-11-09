@@ -1,38 +1,24 @@
-## Requisitos
+# 📋 Requisitos
 
-### Funcionais
+## Funcionais
+1. **Cadastro de Produtos e Fornecedores**
+   - Permitir o cadastro de produtos e fornecedores com campos essenciais (ex.: nome, descrição, preço, dados do fornecedor).
+   
+2. **Registro de Compras**
+   - Permitir o registro de compras, associando produtos e fornecedores ao histórico.
+   
+3. **Histórico de Compras**
+   - Exibir o histórico de compras com detalhes como produto, fornecedor, quantidade e data da compra.
 
-#### 1. Ver todas as tarefas
-- **Rota:** `GET /tarefas`
-- **Descrição:** Retorna todas as tarefas no formato JSON.
+4. **CRUD de Produtos, Fornecedores e Histórico**
+   - Implementar operações de criação, leitura, atualização e exclusão para produtos, fornecedores e histórico de compras.
 
-#### 2. Adicionar uma nova tarefa
-- **Rota:** `POST /tarefas`
-- **Descrição:** Adiciona uma nova tarefa à lista. Cada tarefa deve conter:
-  - `id`: um identificador único (número ou string).
-  - `nome`: o nome da tarefa (string).
-  - `status`: um booleano que indica se a tarefa está concluída (false por padrão).
-- **Validação:** Verificar se já existe uma tarefa com o mesmo nome. Em caso afirmativo, retornar um erro.
+5. **Integração com o Banco de Dados**
+   - Utilizar um ORM para mapear classes JavaScript/TypeScript para tabelas do banco de dados e manipular dados. **De preferência Prisma**.
 
-#### 3. Atualizar uma tarefa existente
-- **Rota:** `PUT /tarefas/:id`
-- **Descrição:** Atualiza uma tarefa existente com base no `id`, permitindo modificar o `nome` e o `status`.
-- **Validação:** Não permite a atualização de uma tarefa com um nome que já exista em outra tarefa.
-
-#### 4. Excluir uma tarefa
-- **Rota:** `DELETE /tarefas/:id`
-- **Descrição:** Remove uma tarefa da lista com base no `id`.
-
-#### 5. Filtrar tarefas por status
-- **Rota:** `GET /tarefas?status=true` ou `GET /tarefas?status=false`
-- **Descrição:** Filtra as tarefas de acordo com o status (Verdadeiro ou Falso).
-
-#### 6. Criar uma interface Frontend
-- **Descrição:** Deve ser criado uma interface simples no Frontend para integrar a API de gerenciamento de tarefas. A interface deve permitir ao usuário adicionar, visualizar, atualizar e excluir tarefas.
-
-### Não Funcional
-- **Uso Obrigatório do Express.js:** A API deve ser desenvolvida utilizando obrigatoriamente o framework Express.js.
-
+## Não Funcionais
+1. **Uso de TypeScript**
+   - A aplicação deve ser implementada em TypeScript para garantir maior segurança e tipagem estática.
 
 
 ## Como Executar Localmente no Windows 🖥️
@@ -49,7 +35,7 @@ Antes de começar, certifique-se de que você tem o seguinte instalado em sua m�
 Abra o seu prompt de comando (cmd) ou PowerShell e execute o seguinte comando para clonar o repositório:
 
 ```bash
-git clone https://github.com/kaufon/Todo-App.git
+git clone https://github.com/kaufon/Invoicer.git
 ```
 
 ### Passo 2: Navegar até o Diretório do Projeto
