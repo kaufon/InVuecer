@@ -6,7 +6,6 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
-
 model Supplier {
   id       String    @id @default(uuid())
   name     String
@@ -25,18 +24,16 @@ model Product {
   price       Int
   supplierId  String
   supplier    Supplier  @relation(fields: [supplierId], references: [id])
-  Receipt     Receipt[]
+  receipts    Receipt[] @relation("ProductReceipt")
 
   @@map("products")
 }
 
 model Receipt {
-  id          String  @id @default(uuid())
+  id          String    @id @default(uuid())
   consumerCpf String?
   price       Int
-  products_id String
-
-  Product Product @relation(fields: [products_id], references: [id])
+  products    Product[] @relation("ProductReceipt")
 
   @@map("receipts")
 }

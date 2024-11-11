@@ -6,6 +6,7 @@ type ReceiptProps = {
   products: Array<{
     id: string;
     name?: string;
+    price?: number;
   }>;
   consumerCpf: string | null;
   price: number;

@@ -1,5 +1,5 @@
-import type { Receipt } from "@prisma/client";
+import type { Receipt, Product } from "@prisma/client";
 
 export type PrismaReceipt = Receipt & {
-  Product?: { name: string };
+  Products: Product[]
 };
