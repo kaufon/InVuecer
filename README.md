@@ -19,6 +19,8 @@
 ## Não Funcionais
 1. **Uso de TypeScript**
    - A aplicação deve ser implementada em TypeScript para garantir maior segurança e tipagem estática.
+1. **Uso de VueJs**
+   - O frontend deve ser implementado em VueJs para fins educacionais.
 
 
 ## Como Executar Localmente no Windows 🖥️
