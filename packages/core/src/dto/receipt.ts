@@ -1,10 +1,9 @@
-export type ReceiptDto = {
+import type { ProductDto } from "./product-dto";
+
+export interface ReceiptDto {
   id?: string;
-  products: Array<{
-    id: string;
-    name?: string;
-    price?: number;
-  }>;
+  products: ProductDto[]
   consumerCpf: string | null;
   price: number;
-};
+}
+

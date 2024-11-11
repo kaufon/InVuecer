@@ -6,6 +6,7 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
 model Supplier {
   id       String    @id @default(uuid())
   name     String
@@ -18,22 +19,31 @@ model Supplier {
 }
 
 model Product {
-  id          String    @id @default(uuid())
-  name        String
-  description String
-  price       Int
-  supplierId  String
-  supplier    Supplier  @relation(fields: [supplierId], references: [id])
-  receipts    Receipt[] @relation("ProductReceipt")
+  id             String           @id @default(uuid())
+  name           String
+  description    String
+  price          Int
+  supplierId     String
+  supplier       Supplier         @relation(fields: [supplierId], references: [id])
+  ReceiptProduct ReceiptProduct[]
 
   @@map("products")
 }
 
 model Receipt {
-  id          String    @id @default(uuid())
-  consumerCpf String?
-  price       Int
-  products    Product[] @relation("ProductReceipt")
+  id             String           @id @default(uuid())
+  consumerCpf    String?
+  price          Int
+  ReceiptProduct ReceiptProduct[]
 
   @@map("receipts")
+}
+
+model ReceiptProduct {
+  id        String  @id @default(uuid())
+  productId String
+  receiptId String
+  quantity  Int
+  product   Product @relation(fields: [productId], references: [id])
+  receipt   Receipt @relation(fields: [receiptId], references: [id])
 }

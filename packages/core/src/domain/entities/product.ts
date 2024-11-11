@@ -6,6 +6,7 @@ type ProductProps = {
   price: number;
   description: string;
   supplierId: string;
+  quantity?:number
 };
 export class Product extends Entity<ProductProps> {
   static create(dto: ProductDto) {
@@ -14,7 +15,8 @@ export class Product extends Entity<ProductProps> {
         name: dto.name,
         price: dto.price,
         description: dto.description,
-        supplierId: dto.supplierId
+        supplierId: dto.supplierId,
+        quantity: dto.quantity
       },
       dto.id,
     );
@@ -34,7 +36,7 @@ export class Product extends Entity<ProductProps> {
   get description():string{
     return this.props.description
   }
-  get supplier():string{
+  get supplierId():string{
     return this.props.supplierId
   }
   get dto():ProductDto{

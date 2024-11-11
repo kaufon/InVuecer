@@ -34,10 +34,8 @@
     "sourceMap": true,
     "strict": true,
     "strictPropertyInitialization": true,
-    "suppressExcessPropertyErrors": true,
     "target": "es2015",  // Change to your preferred ES version
-    "useDefineForClassFields": true,
-    "useSourceOfTruth": true
+    "useDefineForClassFields": true
   },
   "include": [
     "src/**/*.ts",
