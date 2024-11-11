@@ -41,6 +41,7 @@ export class Product extends Entity<ProductProps> {
   }
   get dto():ProductDto{
     return {
+      id: this.id,
       name: this.props.name,
       price: this.props.price,
       description: this.props.description,

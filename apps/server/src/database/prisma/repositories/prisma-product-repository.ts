@@ -63,9 +63,15 @@ export class PrismaProductRepository implements IProductsRepository {
     try {
       const prismaProduct = this.mapper.toPrisma(product);
       await prisma.product.update({
-        data: prismaProduct,
         where: {
           id: prismaProduct.id,
+        },
+
+        data: {
+          name: prismaProduct.name,
+          supplierId: prismaProduct.supplierId,
+          price: prismaProduct.price,
+          description: prismaProduct.description
         },
       });
     } catch (error) {

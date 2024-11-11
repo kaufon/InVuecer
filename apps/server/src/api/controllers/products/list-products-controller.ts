@@ -1,5 +1,5 @@
 import { HTTP_STATUS_CODE } from "@core/constants";
-import { IHttp } from "@core/interfaces";
+import type { IHttp } from "@core/interfaces";
 import { ListProductUseCase } from "@core/use-cases";
 import { productsRepository } from "apps/server/src/database";
 
