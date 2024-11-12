@@ -1,37 +1,11 @@
 {
-  "extends": "../../packages/typescript-config/nextjs.json",
-  "compilerOptions": {
-    "target": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "checkJs": true,
-    "declaration": true,
-    "declarationMap": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "baseUrl": "../../",
-    "paths": {
-      "@core/*": [
-        "packages/core/src/*"
-      ], // Ensure this is correct
-      "@validation/*":[
-        "packages/validation/src/*"
-      ]
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
     }
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts",
-    "**/*.test.ts"
   ]
 }

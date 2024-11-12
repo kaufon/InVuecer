@@ -1,20 +1,9 @@
-import {nextui} from '@nextui-org/theme'
-
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    './src/ui/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
-  ],
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ["var(--font-sans)"],
-        mono: ["var(--font-mono)"],
-      },
-    },
-  },
-  darkMode: "class",
-  darkMode: "class",
- plugins: [nextui()],
-}
+export default {
+	purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+	content: [],
+	theme: {
+		extend: {},
+	},
+	plugins: [],
+};
