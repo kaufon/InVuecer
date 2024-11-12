@@ -1,4 +1,5 @@
 import type { ProductDto } from "../../dto";
+
 import type { IProductsRepository } from "../../interfaces";
 type Request = {
   productDto: Partial<ProductDto>

@@ -78,31 +78,19 @@ export class PrismaReceiptRepository implements IReceiptsRepository {
       throw new PrismaError(error);
     }
   }
-async update(receipt: Receipt): Promise<void> {
-  try {
-    const prismaReceipt = this.mapper.toPrisma(receipt);
-
-    // Handling related ReceiptProduct update in the Prisma schema
-    const receiptProductUpdates = prismaReceipt.ReceiptProduct.map((receiptProduct) => ({
-      where: { productId: receiptProduct.product.id }, // Assuming productId is the relation key
-      data: {
-        quantity: receiptProduct.quantity,
-      },
-    }));
-
-    await prisma.receipt.update({
-      where: { id: prismaReceipt.id },
-      data: {
-        price: prismaReceipt.price,
-        consumerCpf: prismaReceipt.consumerCpf,
-        // Updating ReceiptProduct quantities
-        ReceiptProduct: {
-          updateMany: receiptProductUpdates,
+  async update(receipt: Receipt): Promise<void> {
+    try {
+      const prismaReceipt = this.mapper.toPrisma(receipt);
+      await prisma.receipt.update({
+        where: { id: prismaReceipt.id },
+        data: {
+          price: prismaReceipt.price,
+          consumerCpf: prismaReceipt.consumerCpf,
+          ReceiptProduct: prismaReceipt.ReceiptProduct,
         },
-      },
-    });
-  } catch (error) {
-    throw new PrismaError(error);
+      });
+    } catch (error) {
+      throw new PrismaError(error);
+    }
   }
-}
 }
