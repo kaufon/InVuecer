@@ -1,5 +1,6 @@
 import { Receipt } from "@core/domain";
 import type { PrismaReceipt } from "../types";
+import type { Prisma } from "@prisma/client";
 
 export class PrismaReceiptsMapper {
   toDomain(prismaReceipt: PrismaReceipt): Receipt {
@@ -18,29 +19,27 @@ export class PrismaReceiptsMapper {
     });
   }
 
-  toPrisma(receipt: Receipt): PrismaReceipt {
-    const receiptDto = receipt.dto;
+  toPrisma(receipt: Receipt): Prisma.ReceiptCreateInput {
+    const receiptDto = receipt.dto; 
 
     return {
       id: receipt.id,
       consumerCpf: receiptDto.consumerCpf,
       price: receiptDto.price,
-      ReceiptProduct: receiptDto.products.map((product) => {
-        if (!product.id || product.quantity === undefined) {
-          throw new Error('Product ID or quantity is missing');
-        }
+      ReceiptProduct: {
+        create: receiptDto.products.map((product) => {
+          if (!product.id || product.quantity === undefined) {
+            throw new Error('Product ID or quantity is missing');
+          }
 
-        return {
-          product: {
-            name: product.name,
-            id: product.id, 
-            price: product.price,
-            description: product.description,
-            supplierId: product.supplierId,
-          },
-          quantity: product.quantity, 
-        };
-      }),
+          return {
+            product: {
+              connect: { id: product.id },  // Connecting to existing products by ID
+            },
+            quantity: product.quantity, // Directly mapping quantity
+          };
+        }),
+      },
     };
   }
 }
