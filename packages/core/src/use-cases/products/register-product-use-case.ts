@@ -1,10 +1,10 @@
-import { Product } from "../../domain";
-import type { ProductDto } from "../../dto";
-import type { IProductsRepository } from "../../interfaces";
-type Request = {
-  productDto: ProductDto;
-};
-export class RegisterClientUseCase {
+  import { Product } from "../../domain";
+  import type { ProductDto } from "../../dto";
+  import type { IProductsRepository } from "../../interfaces";
+  type Request = {
+    productDto: ProductDto;
+  };
+export class RegisterProductUseCase {
   private readonly productRepository: IProductsRepository;
   constructor(productRepository: IProductsRepository) {
     this.productRepository = productRepository;
