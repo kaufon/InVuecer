@@ -3,6 +3,7 @@ import Cors from "@fastify/cors";
 import Fastify, { type FastifyInstance } from "fastify";
 import { ProductsRoutes } from "./routes";
 import { SuppliersRoutes } from "./routes/suppliers-routes";
+import { ReceiptsRoutes } from "./routes/receipts-route";
 
 export class FastifyApp implements IServerApp {
   private readonly app: FastifyInstance;
@@ -22,9 +23,10 @@ export class FastifyApp implements IServerApp {
         process.exit(1);
       });
   }
-  stopServer(): void {}
+  stopServer(): void { }
   private registerRoutes() {
     this.app.register(ProductsRoutes, { prefix: "/products" });
-    this.app.register(SuppliersRoutes,{prefix: "/suppliers"})
+    this.app.register(SuppliersRoutes, { prefix: "/suppliers" });
+    this.app.register(ReceiptsRoutes, { prefix: "/receipts" });
   }
 }
