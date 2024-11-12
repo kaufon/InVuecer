@@ -2,7 +2,7 @@ import { Product } from "./product";
 import { Entity } from "../abstracts";
 import type { ReceiptDto } from "../../dto/receipt";
 import { ReceiptProduct } from "./receiptProduct";
-import { ProductDto } from "@core/dto";
+import type { ProductDto } from "@core/dto";
 
 type ReceiptProps = {
   products: ReceiptProduct[];
@@ -14,20 +14,26 @@ export class Receipt extends Entity<ReceiptProps> {
   static create(dto: ReceiptDto) {
     const receiptProdcts = dto.products.map((productDto) =>
       ReceiptProduct.create(
-        new Product({
-          name: productDto.name,
-          price: productDto.price,
-          description: "",
-          supplierId: "",
-        }),
+        new Product(
+          {
+            name: productDto.name,
+            price: productDto.price,
+            description: productDto.description,
+            supplierId: productDto.supplierId,
+          },
+          productDto.id,
+        ),
         productDto.quantity || 1,
       ),
     );
-    return new Receipt({
-      products: receiptProdcts,
-      consumerCpf: dto.consumerCpf,
-      price: dto.price,
-    });
+    return new Receipt(
+      {
+        products: receiptProdcts,
+        consumerCpf: dto.consumerCpf,
+        price: dto.price,
+      },
+      dto.id,
+    );
   }
   update(partialDto: Partial<ReceiptDto>) {
     return Receipt.create({
@@ -52,7 +58,7 @@ export class Receipt extends Entity<ReceiptProps> {
         description: receiptProduct.product.description,
         price: receiptProduct.product.price,
         supplierId: receiptProduct.product.supplierId,
-        quantity: receiptProduct.quantity, 
+        quantity: receiptProduct.quantity,
       })) as ProductDto[],
       price: this.totalPrice,
       consumerCpf: this.props.consumerCpf,

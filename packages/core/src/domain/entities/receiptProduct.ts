@@ -6,14 +6,14 @@ type ReceiptProductProps = {
   quantity: number;
 };
 
-export class ReceiptProduct extends Entity<ReceiptProductProps> {
-  static create(product: Product, quantity: number) {
-    return new ReceiptProduct(
-      {
-        product,
-        quantity,
-      },
-      `${product.id}-${quantity}`, 
+  export class ReceiptProduct extends Entity<ReceiptProductProps> {
+    static create(product: Product, quantity: number) {
+      return new ReceiptProduct(
+        {
+          product,
+          quantity,
+        },
+        product.id, 
     );
   }
   get product(): Product {
