@@ -4,23 +4,24 @@
 1. **Cadastro de Produtos e Fornecedores**
    - Permitir o cadastro de produtos e fornecedores com campos essenciais (ex.: nome, descrição, preço, dados do fornecedor).
    
-2. **Registro de Compras**
-   - Permitir o registro de compras, associando produtos e fornecedores ao histórico.
+2. **entrada de produts**
+   - Permitir o registro de entradas, associando produtos e fornecedores ao histórico.
    
-3. **Histórico de Compras**
-   - Exibir o histórico de compras com detalhes como produto, fornecedor, quantidade e data da compra.
+3. **Histórico de entradas**
+   - Exibir o histórico de entradas com detalhes como produto, fornecedor, quantidade e data da compra.
 
 4. **CRUD de Produtos, Fornecedores e Histórico**
    - Implementar operações de criação, leitura, atualização e exclusão para produtos, fornecedores e histórico de compras.
 
-5. **Integração com o Banco de Dados**
-   - Utilizar um ORM para mapear classes JavaScript/TypeScript para tabelas do banco de dados e manipular dados. **De preferência Prisma**.
+
 
 ## Não Funcionais
 1. **Uso de TypeScript**
    - A aplicação deve ser implementada em TypeScript para garantir maior segurança e tipagem estática.
-1. **Uso de VueJs**
+2. **Uso de VueJs**
    - O frontend deve ser implementado em VueJs para fins educacionais.
+3. **Integração com o Banco de Dados**
+   - Utilizar um ORM para mapear classes TypeScript para tabelas do banco de dados e manipular dados. **De preferência Prisma**.
 
 
 ## Como Executar Localmente no Windows 🖥️
@@ -37,7 +38,7 @@ Antes de começar, certifique-se de que você tem o seguinte instalado em sua m�
 Abra o seu prompt de comando (cmd) ou PowerShell e execute o seguinte comando para clonar o repositório:
 
 ```bash
-git clone https://github.com/kaufon/Invoicer.git
+git clone https://github.com/kaufon/InVuecer.git
 ```
 
 ### Passo 2: Navegar até o Diretório do Projeto
@@ -45,7 +46,7 @@ git clone https://github.com/kaufon/Invoicer.git
 Mude para o diretório do projeto:
 
 ```bash
-cd Todo-App/
+cd InVuecer/
 ```
 
 ### Passo 2: Instalar Dependências
