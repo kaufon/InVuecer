@@ -19,7 +19,7 @@
         <Button @click="deleteSupplier(selectedSupplier.id as string)">Deletar funcionario</Button>
       </template>
     </DataTable>
-    <Drawer v-model:visible="isDrawer" position="right" class="w-96">
+    <Drawer v-model:visible="isDrawer" position="right" :style="{width: '50%'}">
       <UpdateSupplierForm :supplier="supplierForEdting as SupplierDto" />
     </Drawer>
   </div>
@@ -28,7 +28,7 @@
 <script lang="ts" setup>
 import UpdateSupplierForm from '../update-supplier-form/UpdateSupplierForm.vue';
 import { ref, onMounted } from 'vue';
-import Drawer from 'primevue/drawer';
+import { Drawer } from 'primevue';
 import type { SupplierDto } from '@core/dto';
 const dt = ref();
 const isDrawer = ref(false)

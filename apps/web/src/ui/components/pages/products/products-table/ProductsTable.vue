@@ -12,21 +12,34 @@
       <Column field="description" sortable header="Descricao"></Column>
       <Column field="supplierId" sortable header="Id do Fornecedor"></Column>
       <Column field="" header="">
+        <template #body="slotProps">
+          <Button @click="openDrawer(slotProps.data)">Editar</Button>
+        </template>
       </Column>
       <template #footer v-if="productToBeDeleted">
         <Button @click="deleteProduct(productToBeDeleted.id as string)">Deletar produto</Button>
       </template>
     </DataTable>
   </div>
+  <Drawer v-model:visible="isDrawerOpen" position="right" :style="{ width: '50%' }">
+    <UpdateProductForm :product="productToBeEdited as ProductDto"  />
+  </Drawer>
 </template>
 <script lang="ts" setup>
-
+import { Drawer } from 'primevue';
 import type { ProductDto } from '@core/dto';
 import { onMounted } from 'vue';
 import { ref } from 'vue';
+import UpdateProductForm from '../update-product-form/UpdateProductForm.vue';
 const dt = ref()
+const isDrawerOpen = ref(false)
 const products = ref<ProductDto[]>([])
 const productToBeDeleted = ref<ProductDto | null>(null)
+const productToBeEdited = ref<ProductDto | null>(null)
+const openDrawer = (product: ProductDto) => {
+  productToBeEdited.value = product
+  isDrawerOpen.value = true
+}
 const fetchData = async () => {
   try {
     const response = await fetch('http://localhost:3333/products');

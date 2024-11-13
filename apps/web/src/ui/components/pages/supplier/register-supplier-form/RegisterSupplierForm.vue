@@ -1,5 +1,23 @@
+<template>
+  <form @submit.prevent="createSupplier">
+    <div class="grid grid-cols-2 gap-4 w-full">
+
+      <InputText v-model="newSupplier.name" placeholder="Nome" type="text" />
+
+
+      <InputText v-model="newSupplier.email" placeholder="Email" type="email" />
+
+
+      <InputText v-model="newSupplier.phone" type="tel" name="phone" placeholder="Telefone" />
+
+
+      <InputText v-model="newSupplier.cnpj" type="text" name="cnpj" placeholder="CNPJ" />
+    </div>
+    <Button label="Cadastrar" class=" mt-4" type="submit" />
+  </form>
+</template>
+
 <script lang="ts">
-import { InputText } from 'primevue';
 import { defineComponent } from 'vue';
 export default defineComponent({
   data() {
@@ -34,22 +52,3 @@ export default defineComponent({
   }
 })
 </script>
-<template>
-  <form @submit.prevent="createSupplier">
-    <h2 class="text-2xl font-bold mb-4 text-center w-full">Crie um fornecedor</h2>
-    <div class="grid grid-cols-2 gap-4 w-full">
-
-      <InputText v-model="newSupplier.name" placeholder="Nome" type="text" />
-
-
-      <InputText v-model="newSupplier.email" placeholder="Email" type="email" />
-
-
-      <InputText v-model="newSupplier.phone" type="tel" name="phone" placeholder="Telefone" />
-
-
-      <InputText v-model="newSupplier.cnpj" type="text" name="cnpj" placeholder="CNPJ" />
-    </div>
-    <Button label="Cadastrar" class=" mt-4" type="submit" />
-  </form>
-</template>
