@@ -44,6 +44,13 @@ export class PrismaSuppliersRepositoy implements ISuppliesRepository {
         },
       });
       if (prismaSupplier) {
+        await prisma.receiptProduct.deleteMany({
+          where:{
+            product:{
+              supplierId: id
+            }
+          }
+        })
         await prisma.supplier.delete({
           where: {
             id: id,

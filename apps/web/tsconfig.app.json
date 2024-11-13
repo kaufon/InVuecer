@@ -4,6 +4,7 @@
     "env.d.ts",
     "src/**/*",
     "src/**/*.vue",
+    "src/ui/**/*.vue",
     "../../packages/core/src/**/*" // Include the core package
   ],
   "exclude": [

@@ -19,5 +19,9 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@primevue/themes": "^4.2.1",
+    "primevue": "^4.2.1"
+  }
 }

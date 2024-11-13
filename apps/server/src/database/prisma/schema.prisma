@@ -13,7 +13,7 @@ model Supplier {
   email    String    @unique
   phone    String    @unique
   cnpj     String    @unique
-  products Product[]
+  products Product[] 
 
   @@map("suppliers")
 }

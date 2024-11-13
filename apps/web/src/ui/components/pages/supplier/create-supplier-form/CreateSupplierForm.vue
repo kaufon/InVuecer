@@ -1,4 +1,5 @@
 <script lang="ts">
+import { InputText } from 'primevue';
 import { defineComponent } from 'vue';
 export default defineComponent({
   data() {
@@ -38,37 +39,17 @@ export default defineComponent({
     <h2 class="text-2xl font-bold mb-4 text-center w-full">Crie um fornecedor</h2>
     <div class="grid grid-cols-2 gap-4 w-full">
 
-      <div class="flex flex-col">
-        <label for="name">Nome</label>
-        <input v-model="newSupplier.name" type="text" name="name" id="name" placeholder="Nome"
-          class="p-2 border rounded" />
-      </div>
+      <InputText v-model="newSupplier.name" placeholder="Nome" type="text" />
 
 
-      <div class="flex flex-col">
-        <label for="email">Email</label>
-        <input v-model="newSupplier.email" type="email" name="email" id="email" placeholder="Email"
-          class="p-2 border rounded" />
-      </div>
+      <InputText v-model="newSupplier.email" placeholder="Email" type="email" />
 
 
-      <div class="flex flex-col">
-        <label for="phone">Telefone</label>
-        <input v-model="newSupplier.phone" type="tel" name="phone" id="phone" placeholder="Telefone"
-          class="p-2 border rounded" />
-      </div>
+      <InputText v-model="newSupplier.phone" type="tel" name="phone" placeholder="Telefone" />
 
 
-      <div class="flex flex-col">
-        <label for="cnpj">CNPJ</label>
-        <input v-model="newSupplier.cnpj" type="text" name="cnpj" id="cnpj" placeholder="CNPJ"
-          class="p-2 border rounded" />
-      </div>
+      <InputText v-model="newSupplier.cnpj" type="text" name="cnpj" placeholder="CNPJ" />
     </div>
-
-
-    <div class="mt-4 w-full flex justify-center">
-      <button type="submit" class="px-4 py-2 bg-green-500 text-white  rounded">Cadastrar</button>
-    </div>
+    <Button label="Cadastrar" class=" mt-4" type="submit" />
   </form>
 </template>
