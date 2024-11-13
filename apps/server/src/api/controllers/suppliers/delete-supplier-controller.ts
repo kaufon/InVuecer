@@ -7,9 +7,9 @@ type Body = {
 };
 export class DeleteSupplierController {
   async handle(http: IHttp) {
-    const supplierId = http.getBody<Body>();
+    const { supplierId } = http.getBody<Body>();
     const useCase = new DeleteSupplierUseCase(suppliersRepository);
-    await useCase.execute(supplierId);
+    await useCase.execute({ supplierId });
     return http.send(null);
   }
 }
