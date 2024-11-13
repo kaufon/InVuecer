@@ -18,6 +18,8 @@
           <td class="border border-gray-200">{{ item.email }}</td>
           <td class="border border-gray-200">{{ item.phone }}</td>
           <td class="border border-gray-200">{{ item.cnpj || 'N/A' }}</td>
+          <td class="bg-red-500 rounded border text-white text-center"><button
+              @click="deleteSupplier(item.id as string)">Deletar</button></td>
         </tr>
       </tbody>
     </table>
@@ -43,10 +45,25 @@ export default {
           id: item.id,
           ...item.props
         }))
-        console.log(this.suppliers)
       } catch (error) {
         console.error(error)
       }
+    },
+    async deleteSupplier(supplierId: string) {
+      try {
+        const response = await fetch("http://localhost:3333/suppliers", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ supplierId })
+        })
+
+        if (!response.ok) throw new Error("Api error")
+      } catch (err) {
+        console.error(err)
+      }
+
     }
   },
   mounted() {
