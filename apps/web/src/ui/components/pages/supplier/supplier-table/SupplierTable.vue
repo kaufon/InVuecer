@@ -20,6 +20,9 @@
           <td class="border border-gray-200">{{ item.cnpj || 'N/A' }}</td>
           <td class="bg-red-500 rounded border text-white text-center"><button
               @click="deleteSupplier(item.id as string)">Deletar</button></td>
+          <td>
+            <UpdateSupplierForm :supplier-id="item.id as string" />
+          </td>
         </tr>
       </tbody>
     </table>
@@ -27,6 +30,7 @@
 </template>
 <script lang="ts">
 import type { SupplierDto } from '@core/dto';
+import UpdateSupplierForm from '../update-supplier-form/UpdateSupplierForm.vue';
 export default {
   data() {
     return {
@@ -68,7 +72,8 @@ export default {
   },
   mounted() {
     this.fetchData()
-  }
+  },
+  components: { UpdateSupplierForm }
 }
 
 </script>
