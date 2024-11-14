@@ -2,7 +2,7 @@
   <form @submit.prevent="createReceipt">
     <div class="">
       <div>
-        <InputText v-model="newReceipt.consumerCpf" placeholder="Cpf do consumidor" />
+        <InputText v-model="newReceipt.consumerCpf" placeholder="Cpf do receptor" />
 
         <MultiSelect v-model="selectedProducts" :options="products" option-label="name" placeholder="Products"
           @change="updateProductsWithQuantities" />

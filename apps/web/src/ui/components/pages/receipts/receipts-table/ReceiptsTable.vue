@@ -22,12 +22,6 @@
           {{ slotProps.data.totalQuantity }}
         </template>
       </Column>
-      <Column header="">
-        <template #body="slotProps">
-          <Button @click="openDrawer(slotProps.data)">Editar</Button>
-        </template>
-      </Column>
-
       <template #footer v-if="receiptToBeDeleted">
         <Button @click="deleteReceipt(receiptToBeDeleted.id as string)">Deletar recibo</Button>
       </template>
@@ -36,20 +30,13 @@
 </template>
 
 <script setup lang="ts">
-import { Drawer } from 'primevue';
 import { ref, onMounted } from 'vue';
 import type { ReceiptDto } from '@core/dto';
 
 const dt = ref();
-const isDrawerOpen = ref(false);
 const receipts = ref<ReceiptDto[]>([]);
 const receiptToBeDeleted = ref<ReceiptDto | null>(null);
-const receiptToBeEdited = ref<ReceiptDto | null>(null);
 
-const openDrawer = (receipt: ReceiptDto) => {
-  receiptToBeEdited.value = receipt;
-  isDrawerOpen.value = true;
-};
 
 const fetchData = async () => {
   try {
