@@ -26,7 +26,6 @@ const newProduct = ref<ProductDto>({} as ProductDto)
 const suppliers = ref<SupplierDto[]>({} as SupplierDto[])
 async function createProduct() {
   try {
-    console.log(JSON.stringify(newProduct.value))
     const reponse = await fetch('http://localhost:3333/products', {
       method: "POST",
       headers: {
