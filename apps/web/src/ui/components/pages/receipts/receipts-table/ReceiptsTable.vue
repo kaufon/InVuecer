@@ -49,8 +49,11 @@ const fetchData = async () => {
       const quantities = item.props.products.map((product: any) => product.props.quantity);
       const totalQuantity = quantities.reduce((acc: number, qty: number) => acc + qty, 0);
 
-      const prices = item.props.products.map((product: any) => parseFloat(product.props.product.props.price));
-      const totalPrice = prices.reduce((acc: number, price: number) => acc + price, 0);
+      const totalPrice = item.props.products.reduce((acc: number, product: any) => {
+        const price = parseFloat(product.props.product.props.price);
+        const quantity = product.props.quantity;
+        return acc + price * quantity;
+      }, 0);
 
       return {
         id: item.id,
