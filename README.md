@@ -60,7 +60,7 @@ npm install
 
 ### Passo 3: Executar o Projeto
 
-Após configurar as variáveis de ambiente, você pode executar o projeto usando o seguinte comando na pasta `Todo-App`:
+Após configurar as variáveis de ambiente, você pode executar o projeto usando o seguinte comando na pasta `InVuecer`:
 
 ```bash
 npm run dev
