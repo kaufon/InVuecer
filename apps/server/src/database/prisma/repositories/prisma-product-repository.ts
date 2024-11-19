@@ -9,16 +9,29 @@ export class PrismaProductRepository implements IProductsRepository {
 
   async delete(productId: string): Promise<void> {
     try {
+      
       const prismaProduct = await prisma.product.findUnique({
-        where: {
-          id: productId,
-        },
+        where: { id: productId },
       });
+
       if (prismaProduct) {
-        await prisma.product.delete({
+        
+        await prisma.receiptProduct.deleteMany({
+          where: { productId },
+        });
+
+        
+        await prisma.receipt.deleteMany({
           where: {
-            id: productId,
+            ReceiptProduct: {
+              none: {}, 
+            },
           },
+        });
+
+        
+        await prisma.product.delete({
+          where: { id: productId },
         });
       }
     } catch (error) {
@@ -71,7 +84,7 @@ export class PrismaProductRepository implements IProductsRepository {
           name: prismaProduct.name,
           supplierId: prismaProduct.supplierId,
           price: prismaProduct.price,
-          description: prismaProduct.description
+          description: prismaProduct.description,
         },
       });
     } catch (error) {
